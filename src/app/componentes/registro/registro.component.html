@@ -1,0 +1,156 @@
+
+    <div class="container">
+        <form [formGroup]="form" (submit)="registroSubmit()">
+        <div class="row">
+            <div class="col-sm">
+    <div class="md-form">
+      
+        <input type="text" name="usuario" mdbinput autocomplete="off" placeholder="*Username" formControlName="usuario"  />
+    </div>  
+        </div>
+    <div class="col-sm">
+    <div class="md-form">
+   
+    <input type="text" name="email" mdbinput autocomplete="off" placeholder="*Email" formControlName="email"  />
+    </div>
+    </div>
+    <div class="col-sm">
+    <div class="md-form">     
+    <input type="senha" name="senha" mdbinput autocomplete="off" placeholder="*Password" formControlName="senha" />
+    </div>
+</div>
+    <div class="col-sm">
+  <div class="md-form">
+      <label for="confirm">Confirm Password</label>
+      <div [ngClass]="{'has-error': (form.controls.confirm.errors && form.controls.confirm.dirty) || (form.errors?.matchingPasswords && form.controls.confirm.dirty), 'has-success': !form.controls.confirm.errors && !form.errors?.matchingPasswords}">
+        <input type="senha" name="confirm" mdbinput autocomplete="off" placeholder="*Confirm Password" formControlName="confirm" />
+        <!-- Validation -->
+        <ul class="help-block">
+          <li *ngIf="form.controls.confirm.errors?.required && form.controls.confirm.dirty">This field is required</li>
+          <li *ngIf="form.errors?.matchingPasswords && form.controls.confirm.dirty">Password do not match</li>
+        </ul>
+      </div>
+    </div>
+</div>
+</div>
+<div class="row">
+    <div class="col-sm">
+        <div class="md-form">
+            <input mdbInput type="text" [textMask]="{mask: mask}" mdbinput formControlName="telefone" name="telefone" placeholder="Telefone">
+          </div>
+    </div>
+    <div class="col-sm"> 
+     
+        <div class="md-form">
+          <input mdbInput type="text" [textMask]="{mask: maskcel}" mdbinput formControlName="whatsappcelular"  placeholder="WhatsApp/Celular">
+        </div>
+    </div>
+    <div class="col-sm">  
+        <div class="md-form">
+          <select class="browser-default custom-select" formControlName="meio_pagamento" >
+            <option value="" disabled selected>Tipo de Pagamento</option>
+            <option value="ativo">Dinheiro</option>
+            <option value="inativo">Crédito</option>
+            <option value="cancelado">Débito</option>
+           </select>
+        </div></div>
+</div>
+<div class="row">
+    <div class="col-sm">  
+        <div class="md-form">
+            <textarea class="md-textarea form-control" mdbInput formControlName="tipo_negocio" placeholder="Tipo de Negócio"></textarea>
+          </div>
+    </div>
+    <div class="col-sm">  
+        <div class="md-form">
+            <textarea class="md-textarea form-control" mdbInput formControlName="dias_horarios" placeholder="Horário de funcionamento"></textarea>
+          </div>
+    </div>
+    <div class="col-sm">  
+        <div class="md-form">
+          <select class="browser-default custom-select" formControlName="delivery" >
+            <option value="" disabled selected>Faz entrega?</option>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>       
+           </select>
+        </div></div>
+    </div>
+    <div class="row">
+        <div class="col-sm">  
+            <div class="md-form">
+                <textarea class="md-textarea form-control" mdbInput formControlName="instagram" placeholder="Instagram"></textarea>
+              </div>
+        </div>
+        <div class="col-sm">  
+            <div class="md-form">
+                <textarea class="md-textarea form-control" mdbInput formControlName="facebook" placeholder="Facebook"></textarea>
+              </div>
+        </div>
+        <div class="col-sm">  
+            <div class="md-form">
+                <textarea class="md-textarea form-control" mdbInput formControlName="site" placeholder="Site"></textarea>
+              </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">  
+            <div class="md-form">
+                <textarea class="md-textarea form-control" mdbInput formControlName="descricao" placeholder="descrição"></textarea>
+              </div>
+        </div>
+        <div class="col-sm">  
+            <div class="md-form">
+                <textarea class="md-textarea form-control" mdbInput formControlName="obs" placeholder="obs"></textarea>
+              </div>
+        </div>
+    </div>
+    <div formGroupName="endereco">
+      <div class="row">
+       
+       <div class="col-sm"> 
+      <div class="md-form">
+         <input mdbinput type="text" class="form-control" formControlName="cep" id="cep"
+         (blur)="consultaCEP($event.target.value)" placeholder="CEP">
+         <app-error-msg [control]="form.get('endereco.cep')" label="CEP"></app-error-msg>
+       
+       </div>
+       </div>
+       <div class="col-sm"> 
+      <div class="md-form" >
+         <input mdbinput type="text" class="form-control" formControlName="estado" name="estado" placeholder="Estado">
+       </div>
+      </div>
+      <div class="col-sm"> 
+       <div class="md-form" >
+          <input mdbinput type="text" class="form-control" formControlName="complemento" name="complemento" placeholder="complemento">
+        </div>
+       </div>
+      </div>
+      <div class="row">
+       <div class="col-sm"> 
+         <div class="md-form" >
+            <input mdbinput type="text" class="form-control" formControlName="rua" name="rua" placeholder="rua">
+          </div>
+         </div>
+         <div class="col-sm"> 
+           <div class="md-form" >
+              <input mdbinput type="text" class="form-control" formControlName="bairro" name="bairro" placeholder="bairro">
+            </div>
+           </div>
+           <div class="col-sm"> 
+             <div class="md-form" >
+                <input mdbinput type="text" class="form-control" formControlName="cidade" name="cidade" placeholder="cidade">
+              </div>
+             </div>
+             <div class="col-sm"> 
+               <div class="md-form" >
+                  <input mdbinput type="text" class="form-control" formControlName="numero" name="numero" placeholder="Número">
+                </div>
+               </div>
+      </div>
+     </div>
+    
+
+    <input  type="submit" class="btn btn-primary" value="Submit" />
+  </form>
+</div>

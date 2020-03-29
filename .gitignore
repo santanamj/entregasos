@@ -9,6 +9,7 @@
 
 # dependencies
 /node_modules
+/entrega-sos-backend
 
 # profiling files
 chrome-profiler-events*.json
